@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dotify</string>
+    <string name="edit_message">Enter A Message to enter</string>
+    <string name="button_send">Send</string>
+</resources>
