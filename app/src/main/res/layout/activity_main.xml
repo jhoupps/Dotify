@@ -51,15 +51,13 @@
             android:layout_height="wrap_content"
             android:textSize="32dp"
             android:gravity="center_horizontal"
-            android:text="Lucfffk" />
+            android:text="Luck" />
 
         <TextView
             android:id="@+id/tvRandomPlays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:lines="1"
-            android:ellipsize="end"
             android:text="American Authors" />
 
         <TextView
