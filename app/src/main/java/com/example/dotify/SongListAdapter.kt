@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
+import com.ericchee.songdataprovider.Song
 
-class SongAdapter(private val listOfSongs: List<String>): RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
+class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
@@ -19,16 +20,20 @@ class SongAdapter(private val listOfSongs: List<String>): RecyclerView.Adapter<S
     override fun getItemCount() = listOfSongs.size
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
-        val songsName = listOfSongs[position]
-        holder.bind(songsName)
+        val theSong = listOfSongs[position]
+        holder.bind(theSong)
     }
 
     class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val tvName = itemView.findViewById<TextView>(R.id.tvName)
+        private val tvArtist = itemView.findViewById<TextView>(R.id.tvArtist)
 
-        fun bind(name: String) {
-            tvName.text = name
+
+        fun bind(theSongBound: Song) {
+            tvName.text = theSongBound.title
+            tvArtist.text = theSongBound.artist
         }
+
     }
 
 }
