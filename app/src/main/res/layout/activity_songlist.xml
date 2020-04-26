@@ -31,19 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:navigationIcon="@mipmap/ic_launcher"
-            app:backgroundTint="@color/cardview_light_background"/>
-
-        <TextView
-            android:id="@+id/tvNowPlaying"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Now Playing"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            />
+            app:backgroundTint="@color/cardview_light_background"
+            app:labelVisibilityMode="labeled" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
