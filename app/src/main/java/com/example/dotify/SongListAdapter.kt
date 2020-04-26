@@ -3,6 +3,7 @@ package com.example.dotify
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
@@ -27,11 +28,14 @@ class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter
     class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val tvName = itemView.findViewById<TextView>(R.id.tvName)
         private val tvArtist = itemView.findViewById<TextView>(R.id.tvArtist)
+        private val ivSongImage = itemView.findViewById<ImageView>(R.id.ivSongImage)
 
 
         fun bind(theSongBound: Song) {
             tvName.text = theSongBound.title
             tvArtist.text = theSongBound.artist
+            ivSongImage.setImageResource((theSongBound.smallImageID))
+
         }
 
     }

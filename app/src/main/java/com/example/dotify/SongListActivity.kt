@@ -3,6 +3,7 @@ package com.example.dotify
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ericchee.songdataprovider.SongDataProvider
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_songlist.*
 
 

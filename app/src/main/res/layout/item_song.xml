@@ -18,9 +18,11 @@
         android:layout_height="wrap_content"
         tools:text="Song name"
         app:layout_constraintLeft_toRightOf="@id/ivSongImage"
-        app:layout_constraintTop_toTopOf="@id/tvArtist"
-        app:layout_constraintBottom_toBottomOf="@id/ivSongImage"
+        app:layout_constraintTop_toTopOf="@id/ivSongImage"
+        app:layout_constraintBottom_toBottomOf="@id/tvArtist"
         android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="20sp"
         />
     <TextView
@@ -29,8 +31,8 @@
         android:layout_height="wrap_content"
         tools:text="Song artist"
         app:layout_constraintLeft_toRightOf="@id/ivSongImage"
-        app:layout_constraintTop_toTopOf="@id/ivSongImage"
-        app:layout_constraintBottom_toBottomOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvName"
+        app:layout_constraintBottom_toBottomOf="@id/ivSongImage"
         android:layout_marginLeft="16dp"
         android:textSize="12sp"
         />
