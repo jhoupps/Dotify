@@ -5,15 +5,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.dotify.SongListActivity.*
+import android.widget.Toast
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
 
 class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false)
+
+      /*  view.setOnClickListener{
+            SongListActivity.updateMenu
+        } */
+
 
         return SongViewHolder(view)
     }
@@ -23,6 +29,7 @@ class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val theSong = listOfSongs[position]
         holder.bind(theSong)
+
     }
 
     class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -37,7 +44,6 @@ class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter
             ivSongImage.setImageResource((theSongBound.smallImageID))
 
         }
-
     }
 
 }
