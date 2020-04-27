@@ -12,21 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_songlist.*
 
 
-interface MyInterface {
-    var globalMenu: Menu
 
-    fun updateMenu(chosenSong: Song): Boolean {
-        var songTitle = chosenSong.title
-        var songArtist = chosenSong.artist
-
-        globalMenu.findItem(R.id.tvNowPlaying).title = "$songTitle - $songArtist"
-
-        return true
-    }
-}
-
-class SongListActivity : AppCompatActivity(), MyInterface {
-    override lateinit var globalMenu: Menu
+class SongListActivity : AppCompatActivity(){
+    lateinit var globalMenu: Menu
     var listOfSongs = SongDataProvider.getAllSongs()
     var mutableListOfSongs = listOfSongs.toMutableList()
 
@@ -34,15 +22,43 @@ class SongListActivity : AppCompatActivity(), MyInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_songlist)
 
-        //   val listOfSongs = SongDataProvider.getAllSongs()
-
         val thesongAdapter = SongListAdapter(mutableListOfSongs)
+
+        /*
+
+        // Create adapter (may want to save it as property)
+        val personAdapter = PeopleAdapter(listOfPeople)
+
+        // Set on item Click for the adapter
+        personAdapter.onPersonClickListener = { somePerson: Person ->
+
+            val intent = Intent(this, PersonActivity::class.java)
+//            intent.putExtra(NAME_KEY, name)
+////            intent.putExtra(POSITION_KEY, pos)
+//
+            intent.putExtra(PERSON_KEY, somePerson)
+
+            startActivity(intent)
+
+
+        }
+
+         */
+
+        thesongAdapter.onSongClickListener = {someSong: Song ->
+            var songTitle = someSong.title
+            Toast.makeText(this, "$songTitle", Toast.LENGTH_SHORT).show()
+        }
 
         rvSong.adapter = thesongAdapter
 
         setSupportActionBar(findViewById(R.id.bar))
 
+
+
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -50,21 +66,6 @@ class SongListActivity : AppCompatActivity(), MyInterface {
 
         globalMenu = menu
         updateMenu(mutableListOfSongs[0])
-
-     /*  menu.findItem(R.id.btnShuffle).setOnMenuItemClickListener {
-            updateMenu(mutableListOfSongs[2])// WORKs
-           mutableListOfSongs.shuffle()
-       }*/
-
-  /*     menu.findItem(R.id.tvNowPlaying).setOnMenuItemClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            // start your next activity
-            startActivity(intent)
-        }*/
-
-
-
-
 
         return true
     }
@@ -89,13 +90,14 @@ class SongListActivity : AppCompatActivity(), MyInterface {
 
         return super.onOptionsItemSelected(item)
     }
-    /*override fun updateMenu(chosenSong: Song): Boolean {
+
+    fun updateMenu(chosenSong: Song): Boolean {
         var songTitle = chosenSong.title
         var songArtist = chosenSong.artist
-        globalMenu.findItem(R.id.tvNowPlaying).setTitle("$songTitle - $songArtist")
+
+        globalMenu.findItem(R.id.tvNowPlaying).title = "$songTitle - $songArtist"
 
         return true
-
-    } */
+    }
 
 }
