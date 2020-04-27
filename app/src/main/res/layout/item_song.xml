@@ -34,6 +34,7 @@
         app:layout_constraintTop_toTopOf="@id/tvName"
         app:layout_constraintBottom_toBottomOf="@id/ivSongImage"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="12sp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

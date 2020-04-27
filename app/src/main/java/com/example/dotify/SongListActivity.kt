@@ -59,7 +59,6 @@ class SongListActivity : AppCompatActivity(){
         }
 
         else if (item.itemId == R.id.btnShuffle){
-            updateMenu(mutableListOfSongs[2])// WORKs
             mutableListOfSongs.shuffle()
 
             val updatedSongAdapter = SongListAdapter(mutableListOfSongs)
