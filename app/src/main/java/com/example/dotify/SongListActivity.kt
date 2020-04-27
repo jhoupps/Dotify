@@ -17,33 +17,14 @@ class SongListActivity : AppCompatActivity(){
     lateinit var globalMenu: Menu
     var listOfSongs = SongDataProvider.getAllSongs()
     var mutableListOfSongs = listOfSongs.toMutableList()
+    lateinit var currentSong: Song
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_songlist)
 
+
         val thesongAdapter = SongListAdapter(mutableListOfSongs)
-
-        /*
-
-        // Create adapter (may want to save it as property)
-        val personAdapter = PeopleAdapter(listOfPeople)
-
-        // Set on item Click for the adapter
-        personAdapter.onPersonClickListener = { somePerson: Person ->
-
-            val intent = Intent(this, PersonActivity::class.java)
-//            intent.putExtra(NAME_KEY, name)
-////            intent.putExtra(POSITION_KEY, pos)
-//
-            intent.putExtra(PERSON_KEY, somePerson)
-
-            startActivity(intent)
-
-
-        }
-
-         */
 
         thesongAdapter.onSongClickListener = {someSong: Song ->
             updateMenu(someSong)
@@ -52,8 +33,6 @@ class SongListActivity : AppCompatActivity(){
         rvSong.adapter = thesongAdapter
 
         setSupportActionBar(findViewById(R.id.bar))
-
-
 
     }
 
@@ -73,15 +52,20 @@ class SongListActivity : AppCompatActivity(){
         if (item.itemId == R.id.tvNowPlaying) {
             //handle here
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("SONG_KEY", currentSong )
 
             startActivity(intent)
             return true
         }
+
         else if (item.itemId == R.id.btnShuffle){
             updateMenu(mutableListOfSongs[2])// WORKs
             mutableListOfSongs.shuffle()
 
             val updatedSongAdapter = SongListAdapter(mutableListOfSongs)
+            updatedSongAdapter.onSongClickListener = {someSong: Song ->
+                updateMenu(someSong)
+            }
 
             rvSong.adapter = updatedSongAdapter
             return true
@@ -90,7 +74,9 @@ class SongListActivity : AppCompatActivity(){
         return super.onOptionsItemSelected(item)
     }
 
-    fun updateMenu(chosenSong: Song): Boolean {
+    private fun updateMenu(chosenSong: Song): Boolean {
+        currentSong = chosenSong
+
         var songTitle = chosenSong.title
         var songArtist = chosenSong.artist
 

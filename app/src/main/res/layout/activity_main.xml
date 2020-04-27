@@ -43,7 +43,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/oh_what_a_life_cover_art" />
+            android:src="@drawable/oh_what_a_life_cover_art" />
 
         <TextView
             android:id="@+id/textView2"

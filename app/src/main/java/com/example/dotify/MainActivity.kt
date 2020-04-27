@@ -6,7 +6,9 @@ import android.widget.Toast
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
+import com.ericchee.songdataprovider.Song
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -15,6 +17,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val passedSong = intent.getParcelableExtra<Song>("SONG_KEY")
+
+        imageView.setImageResource(passedSong.largeImageID)
+        textView2.setText(passedSong.title)
+        tvRandomPlays.setText(passedSong.artist)
+
 
         nextButton.setOnClickListener {
             Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
