@@ -46,8 +46,7 @@ class SongListActivity : AppCompatActivity(){
          */
 
         thesongAdapter.onSongClickListener = {someSong: Song ->
-            var songTitle = someSong.title
-            Toast.makeText(this, "$songTitle", Toast.LENGTH_SHORT).show()
+            updateMenu(someSong)
         }
 
         rvSong.adapter = thesongAdapter
