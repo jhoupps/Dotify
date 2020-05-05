@@ -1,7 +1,7 @@
 # Dotify
 ## Jay Houppermans
 
-The "hello world" project for my Android Development class
+The third version of the homework project for my Android Development class
 
 
 
