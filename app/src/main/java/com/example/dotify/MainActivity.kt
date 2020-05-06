@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         val passedSong = intent.getParcelableExtra<Song>("SONG_KEY")
 
         imageView.setImageResource(passedSong.largeImageID)
-        textView2.setText(passedSong.title)
-        tvRandomPlays.setText(passedSong.artist)
+        textView2.text = passedSong.title
+        tvRandomPlays.text = passedSong.artist
 
 
         nextButton.setOnClickListener {

@@ -11,9 +11,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
 
-class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
+//This one completely matches the example, with appropriate changes
+//https://github.com/echeeUW/mailedItSpr20/blob/lecture8_MoreFragments/app/src/main/java/com/ericchee/mailedit/EmailAdapter.kt
+class SongListAdapter(private val listOfSongs: List<Song>)
+    : RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
 
     var onSongClickListener: ((song: Song) -> Unit)? = null
+    private val mutableListOfSongs = listOfSongs.toMutableList() //name differs from example conventions
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false)
@@ -24,9 +29,8 @@ class SongListAdapter(private val listOfSongs: List<Song>): RecyclerView.Adapter
     override fun getItemCount() = listOfSongs.size
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
-        val theSong = listOfSongs[position]
+        val theSong = listOfSongs[position] //what's this for again?
         holder.bind(theSong)
-
     }
 
     inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
