@@ -2,11 +2,13 @@ package com.example.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 
 //TODO PUT THE INTERFACE LISTENER HERE
 
-class OverallMain : AppCompatActivity() {
+class OverallMain : AppCompatActivity(), OnSongClickListener {
     var listOfSongs = SongDataProvider.getAllSongs()
 
 
@@ -47,4 +49,32 @@ class OverallMain : AppCompatActivity() {
             }
         }*/
     }
+
+
+    override fun onSongClicked(song: Song) {
+        Toast.makeText(this, "click!",  Toast.LENGTH_SHORT ).show()
+
+
+        /*
+        var emailDetailFragment = getEmailDetailFragment()
+
+        if (emailDetailFragment == null) {
+            emailDetailFragment = EmailDetailFragment()
+            val argumentBundle = Bundle().apply {
+                putParcelable(EmailDetailFragment.ARG_EMAIL, email)
+            }
+            emailDetailFragment.arguments = argumentBundle
+
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragContainer, emailDetailFragment, EmailDetailFragment.TAG)
+                .addToBackStack(EmailDetailFragment.TAG)
+                .commit()
+        } else {
+            emailDetailFragment.updateEmail(email)
+        }
+        */
+
+    }
+
 }

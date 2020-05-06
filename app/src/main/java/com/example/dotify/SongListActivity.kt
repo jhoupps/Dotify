@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_songlist.*
 
 
-
+/*
 class SongListActivity : AppCompatActivity(){
     lateinit var globalMenu: Menu
     var listOfSongs = SongDataProvider.getAllSongs() //ported
@@ -85,3 +85,4 @@ class SongListActivity : AppCompatActivity(){
     }
 
 }
+*/

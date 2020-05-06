@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.dotify.SongListActivity.*
+//import com.example.dotify.SongListActivity.*
 import android.widget.Toast
 
 import androidx.recyclerview.widget.RecyclerView
@@ -13,11 +13,11 @@ import com.ericchee.songdataprovider.Song
 
 //This one completely matches the example, with appropriate changes
 //https://github.com/echeeUW/mailedItSpr20/blob/lecture8_MoreFragments/app/src/main/java/com/ericchee/mailedit/EmailAdapter.kt
-class SongListAdapter(private val listOfSongs: List<Song>)
+class SongListAdapter(listOfSongs: List<Song>)
     : RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
 
-    var onSongClickListener: ((song: Song) -> Unit)? = null
-    private val mutableListOfSongs = listOfSongs.toMutableList() //name differs from example conventions
+    var onSongClicked: ((song: Song) -> Unit)? = null
+    private val listOfSongs = listOfSongs.toMutableList() //name differs from example conventions
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
@@ -45,7 +45,7 @@ class SongListAdapter(private val listOfSongs: List<Song>)
             ivSongImage.setImageResource((theSongBound.smallImageID))
 
             itemView.setOnClickListener {
-                onSongClickListener?.invoke(theSongBound)
+                onSongClicked?.invoke(theSongBound)
             }
 
         }

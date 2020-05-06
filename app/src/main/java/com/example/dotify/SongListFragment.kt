@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.fragment_song_list.*
  */
 class SongListFragment : Fragment() {
     private lateinit var songListAdapter: SongListAdapter
+    private var onSongClickListener: OnSongClickListener? = null
 
-   // private var onSongSelectedListener: OnSongSelectedListener? = null
-   private var listOfSongs: List<Song> = listOf()
+    private var listOfSongs: List<Song> = listOf()
 
     companion object {
       //  val TAG: String = EmailDetailFragment::class.java.simpleName
@@ -42,9 +42,9 @@ class SongListFragment : Fragment() {
             }
         }
 
-     /*   if (context is OnEmailSelectedListener) {
-            //onSongSelectedListener = context
-        }*/
+        if (context is OnSongClickListener) {
+            onSongClickListener = context
+        }
     }
 
 
@@ -62,9 +62,9 @@ class SongListFragment : Fragment() {
         songListAdapter = SongListAdapter(listOfSongs)
         rvSongFrag.adapter = songListAdapter
 
-       /* emailAdapter.onEmailClicked = { email ->
-            onEmailSelectedListener?.onEmailSelected(email)
-        }*/
+        songListAdapter.onSongClicked = { song:Song ->
+            onSongClickListener?.onSongClicked(song)
+        }
 
       /*  btnCompose.setOnClickListener {
             startActivityForResult(Intent(context, ComposeActivity::class.java),
@@ -74,7 +74,7 @@ class SongListFragment : Fragment() {
     }
 
 }
-/*
-interface OnEmailSelectedListener {
-    fun onEmailSelected(email: Email)
-}*/
+
+interface OnSongClickListener {
+    fun onSongClicked(song: Song)
+}
