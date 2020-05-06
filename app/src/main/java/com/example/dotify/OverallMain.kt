@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
+import kotlinx.android.synthetic.main.activity_overall_main.*
 
 //TODO PUT THE INTERFACE LISTENER HERE
 
@@ -52,7 +53,13 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
 
 
     override fun onSongClicked(song: Song) {
-        Toast.makeText(this, "click!",  Toast.LENGTH_SHORT ).show()
+        //Toast.makeText(this, "click!",  Toast.LENGTH_SHORT ).show()
+
+        var songTitle = song.title
+        var songArtist = song.artist
+
+        //TODO MAKE IT PRETIER IF I WANT
+        tvFragPlaying.text = "$songTitle - $songArtist"
 
 
         /*
