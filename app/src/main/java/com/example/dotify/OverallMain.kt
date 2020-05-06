@@ -2,6 +2,7 @@ package com.example.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_overall_main.*
 
 class OverallMain : AppCompatActivity(), OnSongClickListener {
     var listOfSongs = SongDataProvider.getAllSongs()
+    var chosenSong : Song? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +51,33 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             }
         }*/
+
+        btmAppBar.setOnClickListener{
+
+            if(chosenSong != null) {
+                btmAppBar.visibility = View.GONE
+
+                val nowPlayingFragment = NowPlayingFragment()
+
+                val argumentBundle = Bundle().apply {
+                    putParcelable("songKey", chosenSong)
+                }
+
+                //emailDetailFragment.arguments = argumentBundle
+
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.fragContainer, nowPlayingFragment)
+                    .commit()
+            }
+        }
     }
 
 
     override fun onSongClicked(song: Song) {
         //Toast.makeText(this, "click!",  Toast.LENGTH_SHORT ).show()
+
+        chosenSong = song
 
         var songTitle = song.title
         var songArtist = song.artist
