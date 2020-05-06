@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.activity_songlist.*
 
 class SongListActivity : AppCompatActivity(){
     lateinit var globalMenu: Menu
-    var listOfSongs = SongDataProvider.getAllSongs()
-    var mutableListOfSongs = listOfSongs.toMutableList()
+ //   var listOfSongs = SongDataProvider.getAllSongs()
+    //var mutableListOfSongs = listOfSongs.toMutableList()
     lateinit var currentSong: Song
 
     override fun onCreate(savedInstanceState: Bundle?) {
