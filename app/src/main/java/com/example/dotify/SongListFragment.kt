@@ -9,8 +9,7 @@ import com.ericchee.songdataprovider.Song
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val listOfSongs = "param1"
 
 /**
  * A simple [Fragment] subclass.
@@ -23,12 +22,12 @@ class SongListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let{args ->
+    /*    arguments?.let{args ->
             val email = args.getParcelable<Email>(ARG_EMAIL)
             if (email != null) {
                 this.email = email
             }
-        }
+        }*/
     }
 
     override fun onCreateView(
@@ -42,10 +41,10 @@ class SongListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        email?.let {
+       /* email?.let {
             tvFrom.text = it.from
             tvContent.text = it.content
-        }
+        }*/
     }
 /*
     companion object {
