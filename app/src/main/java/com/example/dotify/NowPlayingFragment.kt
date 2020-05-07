@@ -26,10 +26,16 @@ class NowPlayingFragment : Fragment() {
 
     private var song: Song? = null
 
-   /* companion object {
-        const val ARG_EMAIL = "arg_email"
-    } */
+    companion object {
+        val TAG: String = NowPlayingFragment::class.java.simpleName
 
+
+        fun getInstance(song: Song) = NowPlayingFragment().apply {
+            arguments = Bundle().apply {
+                putParcelable("songKey", song)
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

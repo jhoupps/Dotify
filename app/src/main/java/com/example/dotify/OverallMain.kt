@@ -7,9 +7,6 @@ import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import kotlinx.android.synthetic.main.activity_overall_main.*
-import com.example.dotify.SongListFragment.*
-
-//TODO PUT THE INTERFACE LISTENER HERE
 
 class OverallMain : AppCompatActivity(), OnSongClickListener {
     var listOfSongs = SongDataProvider.getAllSongs()
@@ -20,30 +17,25 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_overall_main)
 
-        /*val emailDetailFragment = EmailDetailFragment()
+
+     //   var songListFragment = SongListFragment()
+
+        val songListFragment = SongListFragment.getInstance()
+
+        var arrayListSongs = ArrayList(listOfSongs)
         val argumentBundle = Bundle().apply {
-            val email =  Email("marky@aol.com", "yooooo homieeeee")
-
-            putParcelable(EmailDetailFragment.ARG_EMAIL, email)
+            putParcelableArrayList("theList", arrayListSongs)
         }
-        emailDetailFragment.arguments = argumentBundle*/
+        songListFragment.arguments = argumentBundle
 
-        var songListFragment = SongListFragment()
-
-       // if (songListFragment == null) {
-       //     songListFragment = SongListFragment()
-            var arrayListSongs = ArrayList(listOfSongs)
-            val argumentBundle = Bundle().apply {
-                putParcelableArrayList("theList", arrayListSongs)
-            }
-            songListFragment.arguments = argumentBundle
-       // }
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragContainer, songListFragment)
+            .add(R.id.fragContainer, songListFragment, SongListFragment.TAG)
+            .addToBackStack(SongListFragment.TAG)
             .commit()
 
-        /* supportFragmentManager.addOnBackStackChangedListener {
+        //todo backstack
+        supportFragmentManager.addOnBackStackChangedListener {
             val hasBackStack = supportFragmentManager.backStackEntryCount > 0
 
             if (hasBackStack) {
@@ -51,16 +43,22 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
             } else {
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             }
-        }*/
+        }
 
-        btmAppBar.setOnClickListener{
 
-            if(chosenSong != null) {
+
+        //Now Playing Fragment Things
+
+
+        btmAppBar.setOnClickListener {
+
+            if (chosenSong != null) {
                 btmAppBar.visibility = View.GONE
 
-                val nowPlayingFragment = NowPlayingFragment()
+                // val nowPlayingFragment = NowPlayingFragment()
+                var nowPlayingFragment = getNowPlayingFragment()
 
-                val argumentBundle = Bundle().apply {
+                /*  val argumentBundle = Bundle().apply {
                     putParcelable("songKey", chosenSong)
                 }
 
@@ -70,13 +68,42 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
                     .beginTransaction()
                     .add(R.id.fragContainer, nowPlayingFragment)
                     .commit()
+            }*/
+
+
+                if (nowPlayingFragment == null) {
+                    nowPlayingFragment = NowPlayingFragment.getInstance(chosenSong!!)
+
+                    supportFragmentManager
+                        .beginTransaction()
+                        .add(R.id.fragContainer, nowPlayingFragment, NowPlayingFragment.TAG)
+                        .addToBackStack(NowPlayingFragment.TAG)
+                        .commit()
+                } else {
+                    // nowPlayingFragment.updateEmail(email)
+                    Toast.makeText(this, "update!", Toast.LENGTH_SHORT).show()
+
+                }
             }
         }
+
+
+
 
   /*      btnFragShuffle.setOnClickListener{
             var thesongListFragment = SongListFragment()
             thesongListFragment.shuffleList()
         }*/
+    }
+
+    private fun getNowPlayingFragment() = supportFragmentManager.findFragmentByTag(NowPlayingFragment.TAG) as? NowPlayingFragment
+
+
+
+        //todo backstack
+    override fun onSupportNavigateUp(): Boolean {
+        supportFragmentManager.popBackStack()
+        return super.onNavigateUp()
     }
 
 

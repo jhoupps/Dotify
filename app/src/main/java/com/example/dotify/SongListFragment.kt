@@ -28,9 +28,12 @@ class SongListFragment : Fragment() {
     private var listOfSongs: List<Song> = listOf()
 
     companion object {
-      //  val TAG: String = EmailDetailFragment::class.java.simpleName
+        val TAG = SongListFragment::class.java.simpleName
 
-        //const val ARG_SONGS = "arg_songs"
+
+          fun getInstance(): SongListFragment {
+            return SongListFragment()
+        }
     }
 
     override fun onAttach(context: Context) {
