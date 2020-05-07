@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.ericchee.songdataprovider.Song
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_song_list.*
 
 
@@ -47,6 +48,16 @@ class SongListFragment : Fragment() {
         }
     }
 
+    fun shuffleList(){
+        listOfSongs = listOfSongs.toMutableList().apply {
+            shuffle()
+        }.toList()
+
+
+       // val updatedSongAdapter = SongListAdapter(listOfSongs)
+     //  rvSongFrag.adapter = updatedSongAdapter
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

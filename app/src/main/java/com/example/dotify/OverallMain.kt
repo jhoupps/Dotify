@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import kotlinx.android.synthetic.main.activity_overall_main.*
+import com.example.dotify.SongListFragment.*
 
 //TODO PUT THE INTERFACE LISTENER HERE
 
@@ -70,6 +71,11 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
                     .add(R.id.fragContainer, nowPlayingFragment)
                     .commit()
             }
+        }
+
+        btnFragShuffle.setOnClickListener{
+            var thesongListFragment = SongListFragment()
+            thesongListFragment.shuffleList()
         }
     }
 

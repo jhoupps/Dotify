@@ -1,5 +1,6 @@
 package com.example.dotify
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_now_playing.*
+import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,6 +58,23 @@ class NowPlayingFragment : Fragment() {
             song?.artist?.let{it2 -> fragtvArtist.setText(it2)}
             song?.largeImageID?.let { it1 -> fragimageView.setImageResource(it1) }
         }
+
+        //code for various buttons
+        fragnextButton.setOnClickListener {
+            Toast.makeText(context, "Skipping to next track", Toast.LENGTH_SHORT).show()
+        }
+        fragprevButton.setOnClickListener {
+            Toast.makeText(context, "Skipping to previous track", Toast.LENGTH_SHORT).show()
+        }
+
+        var randomNumber = Random.nextInt(1000, 10000)
+
+        fragtvRandomPlays.text="$randomNumber plays"
+
+        fragplayButton.setOnClickListener {
+              randomNumber += 1
+              fragtvRandomPlays.text="$randomNumber plays"
+          }
     }
 
 
