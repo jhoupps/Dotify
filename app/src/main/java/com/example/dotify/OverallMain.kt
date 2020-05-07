@@ -73,10 +73,10 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
             }
         }
 
-        btnFragShuffle.setOnClickListener{
+  /*      btnFragShuffle.setOnClickListener{
             var thesongListFragment = SongListFragment()
             thesongListFragment.shuffleList()
-        }
+        }*/
     }
 
 

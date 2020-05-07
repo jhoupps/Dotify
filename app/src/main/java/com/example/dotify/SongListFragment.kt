@@ -48,7 +48,7 @@ class SongListFragment : Fragment() {
         }
     }
 
-    fun shuffleList(){
+  /*  fun shuffleList(){
         listOfSongs = listOfSongs.toMutableList().apply {
             shuffle()
         }.toList()
@@ -57,7 +57,7 @@ class SongListFragment : Fragment() {
        // val updatedSongAdapter = SongListAdapter(listOfSongs)
      //  rvSongFrag.adapter = updatedSongAdapter
 
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
