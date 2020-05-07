@@ -12,17 +12,37 @@ It now has an implemented list of songs, as well as the ability to shuffle on th
 
 I did not attempt any extra credit.
 
-![image of the recyclerview working](https://github.com/jhoupps/Dotify/blob/hw2/hw2_working_recyclerview.PNG)
-![image of the mainview working](https://github.com/jhoupps/Dotify/blob/hw2/hw2_working_mainview.PNG)
+![songListFragment](./screenshots/hw3_songListFragment.PNG)
+![nowPlayingFragment](./screenshots/hw3_NowPlayingFragment.PNG)
 
 
-## Usage Notes and known bugs:
-It does not display the title of the app, due to a conflict with the BottomAppBar that I used for implementing the music player
-It also does not display the artist in the main activity, due to a carry-over error from hw1
-If the song selected has a very long title or a very long artist, it pushes the shuffle button off the screen
+## Completion Status
 
-In order to move to the Main Activity, the user must click on the title of the song in the music player container
-Just clicking on the container itself is insufficient
-You must click on the song title or author text
+I have completed all points in the spec, except for the following:
+<ul>
+<li>2aiii, the shuffleList method, does not work and is commented out</li>
+<li>3ii1, clicking the shuffle button does nothing</li>
+<li>4a, the mini player does not keep the same song info</li>
+<li>4b, the play count does not remain consistent</li>
+<li>6a, while the back functionality is enabled via the android back button, there is no
+custom button fulfilling that functionality</li>
+<li>7, there is no rotation implementation</li>
+</ul>
+
+Additional known bugs:
+<ul>
+<li>The "dotify" title bar is not displayed</li>
+<li>The images of songs later on the recyclerview list do not render</li>
+</ul>
+
+## Regarding the major functionalities on the rubric:
+I believe I have fulfilled, more or less, all of the requirements with the exception of the following.
+However, the implementations are somewhat buggy, as stated above
+<ul>
+<li> Partial implementation - Up/Back button displays & pops back-stack </li>
+<li> Current song & play count restores onDestroy() and onCreate()</li>
+<li>Has landscape xml & shows all buttons & info clearly</li>
+</ul>
+
 
 
