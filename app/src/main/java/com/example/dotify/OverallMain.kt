@@ -63,7 +63,7 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
                     putParcelable("songKey", chosenSong)
                 }
 
-                //emailDetailFragment.arguments = argumentBundle
+                nowPlayingFragment.arguments = argumentBundle
 
                 supportFragmentManager
                     .beginTransaction()

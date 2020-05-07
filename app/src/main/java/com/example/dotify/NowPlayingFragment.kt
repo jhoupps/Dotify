@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.ericchee.songdataprovider.Song
 import kotlinx.android.synthetic.main.fragment_now_playing.*
 
@@ -50,8 +51,8 @@ class NowPlayingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         song.let {
-            fragtvSongTitle.text = song?.title
-            fragtvArtist.text = song?.artist
+            song?.title?.let{it3 -> fragtvSongTitle.setText(it3)}
+            song?.artist?.let{it2 -> fragtvArtist.setText(it2)}
             song?.largeImageID?.let { it1 -> fragimageView.setImageResource(it1) }
         }
     }

@@ -32,12 +32,6 @@
                 android:gravity="center_horizontal"
                 android:text="Luck" />
 
-            <TextView
-                android:id="@+id/fragtvRandomPlays"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="" />
 
             <TextView
                 android:id="@+id/fragtvArtist"
@@ -46,6 +40,13 @@
                 android:gravity="center_horizontal"
                 android:paddingTop="16dp"
                 android:text="" />
+
+            <TextView
+                android:id="@+id/fragtvRandomPlays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="500000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
