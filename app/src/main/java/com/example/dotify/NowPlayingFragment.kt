@@ -83,6 +83,17 @@ class NowPlayingFragment : Fragment() {
           }
     }
 
+    fun updateSong(song: Song) {
+        this.song = song
+        updateSongViews()
+    }
 
+    private fun updateSongViews() {
+        song?.let {
+            song?.title?.let{it3 -> fragtvSongTitle.setText(it3)}
+            song?.artist?.let{it2 -> fragtvArtist.setText(it2)}
+            song?.largeImageID?.let { it1 -> fragimageView.setImageResource(it1) }
+        }
+    }
 
 }

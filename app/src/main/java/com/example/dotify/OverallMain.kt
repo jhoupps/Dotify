@@ -80,7 +80,7 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
                         .addToBackStack(NowPlayingFragment.TAG)
                         .commit()
                 } else {
-                    // nowPlayingFragment.updateEmail(email)
+                    nowPlayingFragment.updateSong(chosenSong!!)
                     Toast.makeText(this, "update!", Toast.LENGTH_SHORT).show()
 
                 }
@@ -94,6 +94,12 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
             var thesongListFragment = SongListFragment()
             thesongListFragment.shuffleList()
         }*/
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        btmAppBar.visibility = View.VISIBLE
+
     }
 
     private fun getNowPlayingFragment() = supportFragmentManager.findFragmentByTag(NowPlayingFragment.TAG) as? NowPlayingFragment
@@ -119,26 +125,6 @@ class OverallMain : AppCompatActivity(), OnSongClickListener {
         tvFragPlaying.text = "$songTitle - $songArtist"
 
 
-        /*
-        var emailDetailFragment = getEmailDetailFragment()
-
-        if (emailDetailFragment == null) {
-            emailDetailFragment = EmailDetailFragment()
-            val argumentBundle = Bundle().apply {
-                putParcelable(EmailDetailFragment.ARG_EMAIL, email)
-            }
-            emailDetailFragment.arguments = argumentBundle
-
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragContainer, emailDetailFragment, EmailDetailFragment.TAG)
-                .addToBackStack(EmailDetailFragment.TAG)
-                .commit()
-        } else {
-            emailDetailFragment.updateEmail(email)
-        }
-        */
-
-    }
+       }
 
 }
